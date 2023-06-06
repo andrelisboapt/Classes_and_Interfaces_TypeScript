@@ -1,13 +1,16 @@
 class Department { //creating a new Class
-    name: string;  //property of the class, by default is public
+    //private id: string;
+    //private name: string;  //property of the class, by default is public
     private employees: string[] = []; //private means the only access is inside the Class
 
-    constructor(n: string){ //constructor is reserved keyword, but works like a function
-        this.name = n; //here we give the value "n" to the property name, so objects created with this class, will have the property 'name' with the value we gave
-    }
+
+    constructor(private readonly id: string, public name: string){ //constructor is reserved keyword, but works like a function
+        //this.name = n; //here we give the value "n" to the property name, so objects created with this class, will have the property 'name' with the value we gave
+        //we also have the 'readonly' modifier which means that the value of that property cannot change, for example, the 'id'
+    }   
 
     describe() { //this is a method or constructor functions
-        console.log('Department: ' + this.name) //we have to use 'this' to refer to the class property
+        console.log(`Department (${this.id}): ${this.name}`) //we have to use 'this' to refer to the class property
     }
 
     addEmployee(employee: string){
@@ -20,7 +23,9 @@ class Department { //creating a new Class
     }
 }
 
-const accounting = new Department('Accounting'); //creating an object with instance from the class where we pass the value for the 'name'
+const accounting = new Department('d1','Accounting'); //creating an object with instance from the class where we pass the value for the 'name'
+//added 'd1' because we added an 'id' property do the Class
+
 
 //console.log(accounting) //here we have the 'accounting' object with 'name' inside with the value 'Accounting'
 
